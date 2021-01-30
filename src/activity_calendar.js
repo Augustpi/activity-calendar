@@ -110,6 +110,7 @@ function activityCalendar (year, month, activeDays = []) {
     }
     else if (lastWeekGap = 0)
       lastWeekGaplerDiv = '';
+
     const elm = [
       monthEl,
       weekEl,
@@ -147,6 +148,7 @@ function activityCalendar (year, month, activeDays = []) {
     return [el, dayOftheWeek]
   }
 }
+
 /**
  * Calendar object, You should look at db.json
  * @param {Object} calendar 
