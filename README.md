@@ -2,6 +2,8 @@
 
 Experimental activity calendar
 
+![screenshot](https://raw.githubusercontent.com/Augustpi/activity-calendar/main//screenshot.png)
+
 ## Run
 
 Run `yarn insall` and `yarn dev` to run the project. The build artifacts will be stored in the `dist/`
