@@ -1,3 +1,8 @@
+/**
+ * getDayName
+ * @param {*} dateStr 
+ * @param {*} locale 
+ */
 function getDayName (dateStr, locale) {
   var date = new Date(dateStr);
   return date.toLocaleDateString(locale, { weekday: 'long' });
@@ -5,6 +10,11 @@ function getDayName (dateStr, locale) {
 
 const uniqueElements = arr => [...new Set(arr)]
 
+/**
+ * Generate activity calendar
+ * @param {Number} day day
+ * @param {Array} arr array
+ */
 const activity = (day, arr) => {
   var dayEl = `<div class='a__day' day="${day}"></div>`; //${day}
   var days = [
@@ -100,12 +110,31 @@ function activityCalendar (year, month, activeDays = []) {
     }
     else if (lastWeekGap = 0)
       lastWeekGaplerDiv = '';
-    const elm = [monthEl, weekEl, firstWeekGaplerDiv, firstWeekFilllerDiv, endEl, addWeek, weekEl, lastWeekFilllerDiv, lastWeekGaplerDiv, endEl, monthNameEl, monthElEnd]
+    const elm = [
+      monthEl,
+      weekEl,
+      firstWeekGaplerDiv,
+      firstWeekFilllerDiv,
+      endEl,
+      addWeek,
+      weekEl,
+      lastWeekFilllerDiv,
+      lastWeekGaplerDiv,
+      endEl,
+      monthNameEl,
+      monthElEnd
+    ]
     activityCalendar = elm.join('');
   }
 
   document.querySelector('#activityCalendar').innerHTML += activityCalendar
 
+  /**
+   * 
+   * @param {Element} el 
+   * @param {*} loop 
+   * @param {*} arr 
+   */
   function createWeek (el, loop, arr) {
     const getDate = new Date().getDate();
     const getMonth = new Date().getMonth() + 1;
@@ -118,33 +147,26 @@ function activityCalendar (year, month, activeDays = []) {
     return [el, dayOftheWeek]
   }
 }
+/**
+ * Calendar object, You should look at db.json
+ * @param {Object} calendar 
+ */
+function generate (calendar) {
+  activityCalendar(0, 0);
+  for (let i in calendar)
+    for (let m in calendar[i])
+      activityCalendar(2021, m, calendar[i][m]);
+}
 
-activityCalendar(0, 0);
-
-// const calendar = {
-//   2021: [
-//     { 1: [] },
-//     { 2: [2, 2, 4, , 4, 4, 4, 3, 5, 28, 29] },
-//     { 3: [1, 2, 3, 5, 6, 19, 20, 21, 22] },
-//     { 4: [] },
-//     { 5: [] },
-//     { 6: [4, 9, 10, 12, 22, 23, 24, 29] },
-//     { 7: [] },
-//     { 8: [] },
-//     { 9: [1, 4, 5, 6, 15, 16, 20] },
-//     { 10: [] },
-//     { 11: [] },
-//     { 12: [] }
-//   ]
-// }
-
-// Aktivite Takvimi son 
-fetch('http://localhost:3000/calendar')
-  .then(response => response.json())
-  .then(data => {
-    const calendar = data[0][2021]
-    for (let i in calendar)
-      for (let m in calendar[i])
-        activityCalendar(2021, m, calendar[i][m]);
-  })
+try {
+  fetch('http://localhost:3000/calendar')
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      const calendar = data[0][2021]
+      generate(calendar)
+    })
+} catch (error) {
+  throw new Error(error)
+}
 

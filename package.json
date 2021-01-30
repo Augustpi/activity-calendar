@@ -1,6 +1,6 @@
 {
   "name": "activity-calendar",
-  "version": "1.0.0",
+  "version": "1.2.0",
   "main": "index.js",
   "repository": "https://github.com/Augustpi/activity-calendar.git",
   "author": "Avni Onur Pehlivan <avnionur@gmail.com>",
@@ -8,7 +8,7 @@
   "scripts": {
     "start": "concurrently \"yarn run server\" \"parcel src/index.html\"",
     "server": "json-server server/db.json",
-    "dev": "parcel src/index.html",
+    "dev": "concurrently \"yarn run server\" \"parcel src/index.html\"",
     "build": "parcel build index.html"
   },
   "devDependencies": {
