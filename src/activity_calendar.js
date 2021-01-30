@@ -119,27 +119,32 @@ function activityCalendar (year, month, activeDays = []) {
   }
 }
 
-// Aktivite Takvimi son 
-
-const calendar = {
-  2021: [
-    { 1: [] },
-    { 2: [2, 2, 4, , 4, 4, 4, 3, 5, 28, 29] },
-    { 3: [1, 2, 3, 5, 6, 19, 20, 21, 22] },
-    { 4: [] },
-    { 5: [] },
-    { 6: [4, 9, 10, 12, 22, 23, 24, 29] },
-    { 7: [] },
-    { 8: [] },
-    { 9: [1, 4, 5, 6, 15, 16, 20] },
-    { 10: [] },
-    { 11: [] },
-    { 12: [] }
-  ]
-}
-
 activityCalendar(0, 0);
 
-for (let i in calendar[2021])
-  for (let m in calendar[2021][i])
-    activityCalendar(2021, m, calendar[2021][i][m]);
+// const calendar = {
+//   2021: [
+//     { 1: [] },
+//     { 2: [2, 2, 4, , 4, 4, 4, 3, 5, 28, 29] },
+//     { 3: [1, 2, 3, 5, 6, 19, 20, 21, 22] },
+//     { 4: [] },
+//     { 5: [] },
+//     { 6: [4, 9, 10, 12, 22, 23, 24, 29] },
+//     { 7: [] },
+//     { 8: [] },
+//     { 9: [1, 4, 5, 6, 15, 16, 20] },
+//     { 10: [] },
+//     { 11: [] },
+//     { 12: [] }
+//   ]
+// }
+
+// Aktivite Takvimi son 
+fetch('http://localhost:3000/calendar')
+  .then(response => response.json())
+  .then(data => {
+    const calendar = data[0][2021]
+    for (let i in calendar)
+      for (let m in calendar[i])
+        activityCalendar(2021, m, calendar[i][m]);
+  })
+

@@ -8,8 +8,18 @@ Experimental activity calendar
 
 Run `yarn insall` and `yarn dev` to run the project. The build artifacts will be stored in the `dist/`
 
-## Keep in touch
+## REST API and Development server
+
+  `npm run server` or `yarn server`
+
+For a dev server run `npm run server` and this also runs JSON Server for the fake REST API.
+After that you can navigate to `http://localhost:1234/`.
+Also navigate in order to REST API to http://localhost:3000/calendar, 
+
+## Keep in touch and please contribute
 
 Avni Onur Pehlivan @Augustpi
+
 https://github.com/Augustpi
+
 https://www.linkedin.com/in/avni-onur-pehlivan-5005b018/

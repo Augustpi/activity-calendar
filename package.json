@@ -5,11 +5,18 @@
   "repository": "https://github.com/Augustpi/activity-calendar.git",
   "author": "Avni Onur Pehlivan <avnionur@gmail.com>",
   "license": "MIT",
-    "scripts": {
+  "scripts": {
+    "start": "concurrently \"yarn run server\" \"parcel src/index.html\"",
+    "server": "json-server server/db.json",
     "dev": "parcel src/index.html",
     "build": "parcel build index.html"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4"
+  },
+  "dependencies": {
+    "concurrently": "^5.3.0",
+    "json-server": "^0.16.3",
+    "jsonwebtoken": "^8.5.1"
   }
 }
