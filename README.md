@@ -6,7 +6,7 @@ Experimental activity calendar
 
 ## Run
 
-Run `yarn insall` and `yarn dev` to run the project. The build artifacts will be stored in the `dist/`
+Run `yarn insall` and `yarn server` to run the project. The build artifacts will be stored in the `dist/`
 
 ## REST API and Development server
 
