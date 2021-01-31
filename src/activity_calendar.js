@@ -149,24 +149,27 @@ function activityCalendar (year, month, activeDays = []) {
   }
 }
 
+activityCalendar(0, 0);
+
 /**
  * Calendar object, You should look at db.json
  * @param {Object} calendar 
  */
-function generate (calendar) {
-  activityCalendar(0, 0);
+function generate (calendar, key) {
   for (let i in calendar)
     for (let m in calendar[i])
-      activityCalendar(2021, m, calendar[i][m]);
+      activityCalendar(key, m, calendar[i][m]);
 }
 
 try {
   fetch('http://localhost:3000/calendar')
     .then(response => response.json())
     .then(data => {
-      console.log(data);
-      const calendar = data[0][2021]
-      generate(calendar)
+      var i = 0
+      for (let key in data[0]) {
+        const calendar = data[i][key]
+        generate(calendar, key)
+      }
     })
 } catch (error) {
   throw new Error(error)
