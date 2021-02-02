@@ -1,0 +1,7 @@
+{
+  "extends": "@atolye15/stylelint-config",
+  "rules": {
+    "indentation": "tab",
+    "number-leading-zero": null
+  }
+}
