@@ -48,7 +48,7 @@ Example for february, "2", [] numbers in the array represent days, and repetitio
 You can contribute for any feature
   - [x] Coloring the day contributed
   - [x] Restfull api
-  - [ ] Showing the amount of contribution for each day of the calendar (highlighting the day intensity with color)
+  - [x] Showing the amount of contribution for each day of the calendar (highlighting the day intensity with color)
   - [ ] Highlight of the busiest day
   - [ ] Popup
 
